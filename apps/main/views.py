@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Gabarit
+from django.views.generic import TemplateView, DetailView, ListView
 
-# Create your views here.
+class GabaritView(TemplateView):
+    template_name = 'index.html'

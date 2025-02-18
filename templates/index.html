@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    <title>Gabarit</title>
+    <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand " href="#"> Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-4">
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item">
+                <a class="nav-link " href="#Profession">Profession</a></li>
+            <a class="nav-link " href="#Services">Services</a></li>
+            <a class="nav-link " href="#portfolio">Portfolio</a></li>
+            <a class="nav-link " href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<!--header-->
+<section>
+    <div class="container service1 mt-5 " id="Services">
+        <h2>Services</h2>
+        <p class="text-muted mb-5">My Service </p>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr text-primary services-icon">
+                    <use xlink:href="#lnr-heart"></use>
+                </svg>
+                <h6>Tempor aute occaecat</h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr lnr-database">
+                    <use xlink:href="#lnr-database"></use>
+                </svg>
+                <h6>PostgreSQL </h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr text-primary services-icon">
+                    <use xlink:href="#lnr-rocket"></use>
+                </svg>
+                <h6>Tempor aute occaecat</h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr lnr-lock">
+                    <use xlink:href="#lnr-lock"></use>
+                </svg>
+                <h6>Tempor aute occaecat</h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr lnr-user">
+                    <use xlink:href="#lnr-user"></use>
+                </svg>
+                <h6>Tempor aute occaecat</h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <svg class="lnr lnr-magnifier">
+                    <use xlink:href="#lnr-magnifier"></use>
+                </svg>
+                <h6>Tempor aute occaecat</h6>
+                <p class="text-muted">Tempor aute occaecat pariatur esse aute amet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--mativator-->
+<section>
+    <div class="container service1">
+        <blockquote class="blockquote text-center mb-0">
+            <svg class="lnr text-muted quote-icon pull-left">
+                <use xlink:href="#lnr-mustache"></use>
+            </svg>
+            <p class="mb-0 mt-3">Knowledge is Power. ^_^</p>
+            <footer class="blockquote-footer mt-3">Francis Bacon, in
+                <cite title="Source Title mt-3">Meditationes Sacrae (1597)</cite>
+            </footer>
+        </blockquote>
+    </div>
+</section>
+<!-- Posts section -->
+<div class="blog">
+    <div class="container">
+        <h1 class="text-center" id="portfolio">Portfolio</h1>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="image/Screenshot (221).png" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Hotel</h4>
+                        <p class="card-text">
+                            With over 340 hotels worldwide, NH
+                            Hotel Group offers a wide variety of hotels catering for a
+                            perfect stay no matter where your destination.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/Khudoykulov" target="_blank" class="card-link">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="image/Screenshot (211).png" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Portfolio</h4>
+                        <p class="card-text">
+                            Currently I have little knowledge skills in Python programming language Django
+                            DjangoRest_framework.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/Khudoykulov" target="_blank" class="card-link">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="image/Screenshot (191).png" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Blog</h4>
+                        <p class="card-text">
+                            Far far away, behind the word mountains.there live the blind texts. Separated
+                            they live in Bookmarksgrove right at the coast of the Semantics.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://github.com/Khudoykulov" target="_blank" class="card-link">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact form -->
+<div class="contact-form" id="contact">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h1>Get in Touch</h1>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 right">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="name">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com"
+                               name="email">
+                    </div>
+                    <div class="form-group mt-3">
+            <textarea class="form-control form-control-lg">
+            </textarea>
+                    </div>
+                    <input type="submit" class="btn btn-secondary btn-block mt-3" value="Send" name="form">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--Footer-->
+<div class="container footer footer1">
+    <footer class="py-5">
+        <div class="row">
+            <div class=" col-6  mb-3">
+                <h3>Footer</h3>
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link px-2 text-muted">About</a></li>
+                    <li class="nav-item"><a href="#Profession" class="nav-link px-2 text-muted">Profession</a></li>
+                    <li class="nav-item"><a href="#Services" class="nav-link px-2 text-muted">Services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link px-2 text-muted">Portfolio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link px-2 text-muted">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-5 offset-md-1 mb-3">
+                <form>
+                    <h5>Subscribe to our newsletter</h5>
+                    <p>Monthly digest of what's new and exciting from us.</p>
+                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <label for="newsletter1" class="visually-hidden">Email address</label>
+                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src='js/main.js'></script>-->
+</body>
+</html>
