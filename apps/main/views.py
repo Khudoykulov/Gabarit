@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 import serial
-
+from .models import Gabarit
 class GabaritView(TemplateView):
     template_name = 'index.html'
 
@@ -39,4 +39,16 @@ class GabaritView(TemplateView):
         #     if ser:
         #        ser.close()  # Serial portni yopamiz
         print(context)
+        Gabarit.objects.create(width=x, length=y, high=h)
         return context
+
+
+class CarsView(ListView):
+    model = Gabarit  # Model bilan bog'lash
+    template_name = 'cars.html'  # Template nomi
+    context_object_name = 'cars'  # Template ichida foydalaniladigan o'zgaruvchi
+    paginate_by = 5  # Har bir sahifada 25 ta obyekt bo‘lishi
+
+    def get_queryset(self):
+        return Gabarit.objects.all().order_by('-created_date')  # Yangi ma'lumotlarni avval chiqarish
+

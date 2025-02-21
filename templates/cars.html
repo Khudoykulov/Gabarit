@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabarit Ma'lumotlari</title>
-    <!--    <meta http-equiv="refresh" content="2"> &lt;!&ndash; 2 soniyada bir yangilanadi &ndash;&gt;-->
+<!--    <meta http-equiv="refresh" content="2"> &lt;!&ndash; 2 soniyada bir yangilanadi &ndash;&gt;-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -31,28 +31,52 @@
     </div>
 </nav>
 <!--header-->
-<section>
-    <div class="container service1 mt-5 Car " id="Services">
-        <h2 class="text-center Car">Car gabarit</h2>
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr text-primary services-icon">
-                </svg>
-                <h3>X</h3>
-                <p><strong>X:</strong> {{ x }}</p></div>
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr lnr-database">
-                </svg>
-                <h3>Y</h3>
-                <p><strong>Y:</strong> {{ y }}</p></div>
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr text-primary services-icon">
-                </svg>
-                <h3>H</h3>
-                <p><strong>H:</strong> {{ h }}</p></div>
+
+    <div class="container">
+        <h1>Avtomobillar Gabarit Ma'lumotlari</h1>
+        <div class="car-list">
+            {% for car in cars %}
+                <div class="car-card">
+                    <h2>{{ car.name }}</h2>
+                    <p><strong>ID:</strong> {{ car.id }} </p>
+                    <p><strong>Kengligi:</strong> {{ car.width }} cm</p>
+                    <p><strong>Uzunligi:</strong> {{ car.length }} cm</p>
+                    <p><strong>Balandligi:</strong> {{ car.high }} cm</p>
+                    <p class="date">Yaratilgan sana: {{ car.created_date|date:"d M Y" }}</p>
+                </div>
+            {% empty %}
+                <p>Hozircha hech qanday avtomobil ma'lumotlari mavjud emas.</p>
+            {% endfor %}
         </div>
+
+{% if page_obj.has_other_pages %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">Birinchi</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Oldingi</a>
+            </li>
+        {% endif %}
+
+        <li class="page-item disabled">
+            <span class="page-link">
+                Sahifa {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+            </span>
+        </li>
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Keyingi</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Oxirgi</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
     </div>
-</section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

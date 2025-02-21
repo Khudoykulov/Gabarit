@@ -140,3 +140,60 @@ img {
     border-radius: 10px; /* Yumaloq burchaklar */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Pastga tushgan soyalar */
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.car-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
+}
+
+.car-card h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.car-card p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.car-card .date {
+    font-size: 14px;
+    color: gray;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pagination .page-link {
+    margin: 0 5px;
+}
