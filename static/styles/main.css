@@ -127,3 +127,16 @@ svg {
 img {
     border-radius: 70%;
 }
+.Car {
+    margin-top: 3cm;
+}
+.Car_gabarit {
+    margin-left: 0.5cm;
+}
+
+.navbar_car {
+    background: linear-gradient(to right, #3b82f6, #6366f1); /* Och ko‘kdan to‘q ko‘kka gradient */
+    padding: 15px 20px;
+    border-radius: 10px; /* Yumaloq burchaklar */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Pastga tushgan soyalar */
+}
