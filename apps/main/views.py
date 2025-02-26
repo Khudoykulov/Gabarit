@@ -7,41 +7,50 @@ class GabaritView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        ser = None
 
-        # Serial portni ochamiz
-        com_port = 'COM3'  # Arduino COM port
+        com_port = 'COM3'  # Arduino COM portini moslang
         baud_rate = 9600
-        h, x, y, = 1, 2, 3
-        # HTML sahifaga jo‘natiladigan qiymatlar
-        context['h'] = h
-        context['x'] = x
-        context['y'] = y
+        h_max, h_min = 0, 30
+        x_max, x_min = 0, 30
+        y_max, y_min = 0, 30
 
-        # try:
-        #     ser = serial.Serial(com_port, baud_rate, timeout=2)  # 2 soniya kutish
-        #     ser.flush()
-        #
-        #     if ser.in_waiting > 0:
-        #         data = ser.readline().decode('latin-1').strip()
-        #         data = data[:-4].split()
-        #         # h, x, y = int(data[1]), int(data[3]), int(data[5])
-        #         h, x, y, = 1, 2, 3
-        #         # HTML sahifaga jo‘natiladigan qiymatlar
-        #         context['h'] = h
-        #         context['x'] = x
-        #         context['y'] = y
-        #
-        # except Exception as e:
-        #     context['error'] = f"Xatolik yuz berdi: {e}"
-        #
-        # finally:
-        #     if ser:
-        #        ser.close()  # Serial portni yopamiz
-        print(context)
-        Gabarit.objects.create(width=x, length=y, high=h)
+        try:
+            with serial.Serial(com_port, baud_rate, timeout=2) as ser:
+                ser.flush()
+
+                if ser.in_waiting > 0:
+                    # Sensor ma’lumotlarini olish
+                    data = ser.readline().decode('latin-1').strip()
+                    data = data[:-4].split()
+
+                    if len(data) >= 6:  # Ma'lumotlar formati to'g'ri ekanligini tekshiramiz
+                        h, x, y = int(data[1]), int(data[3]), int(data[5])
+                        print(h,x,y)
+
+                        h_max = max(h_max, h)
+                        h_min = min(h_min, h)
+                        x_max = max(x_max, x)
+                        x_min = min(x_min, x)
+                        y_max = max(y_max, y)
+                        y_min = min(y_min, y)
+
+                        h_result = h_max - h_min
+                        x_result = x_max - x_min
+                        y_result = y_max - y_min
+
+                        context['h'] = h_result
+                        context['x'] = x_result
+                        context['y'] = y_result
+
+                        # Modelga saqlash
+                        Gabarit.objects.create(width=x_result, length=y_result, high=h_result)
+
+                        print(f"Saqlangan qiymatlar: H={h_result}, X={x_result}, Y={y_result}")
+
+        except serial.SerialException as e:
+            print(f"Xatolik: {e}")
+
         return context
-
 
 class CarsView(ListView):
     model = Gabarit  # Model bilan bog'lash
