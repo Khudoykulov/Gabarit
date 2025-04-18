@@ -4,59 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabarit Ma'lumotlari</title>
-    <!--    <meta http-equiv="refresh" content="2"> &lt;!&ndash; 2 soniyada bir yangilanadi &ndash;&gt;-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Avtomobil Gabarit Vizual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-    <!--    <title>Gabarit</title>-->
-    <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .car-container {
+            position: relative;
+            width: 320px;
+            margin: 0 auto 40px;
+        }
+        .car-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .dimension {
+            position: absolute;
+            font-weight: bold;
+            background: rgba(255,255,255,0.9);
+            padding: 4px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .x-dimension {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .h-dimension {
+            top: 50%;
+            right: -70px;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+    </style>
 </head>
 <body>
-<!-- navbar -->
-<nav class="navbar navbar-expand-lg fixed-top navbar_car">
-    <a class="navbar-brand Car_gabarit " href="{% url 'main:index'%}"> Car gabarit</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav mr-4">
-            <li class="nav-item">
-                <a class="navbar-brand" href="{% url 'main:cars' %}">Cars</a></li>
-        </ul>
-    </div>
-</nav>
-<!--header-->
-<section>
-    <div class="container service1 mt-5 Car " id="Services">
-        <h2 class="text-center Car">Car gabarit</h2>
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr text-primary services-icon">
-                </svg>
-                <h3>X</h3>
-                <p><strong>X:</strong> {{ x }}</p></div>
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr lnr-database">
-                </svg>
-                <h3>Y</h3>
-                <p><strong>Y:</strong> {{ y }}</p></div>
-            <div class="col-sm-6 col-lg-4 mb-3">
-                <svg class="lnr text-primary services-icon">
-                </svg>
-                <h3>H</h3>
-                <p><strong>H:</strong> {{ h }}</p></div>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Avtomobil Gabarit Ma'lumotlari</h2>
+
+        <!-- Visual car with dimensions -->
+        <div class="car-container">
+            <img src="{% static 'car.png' %}" alt="Car" class="car-image">
+            <div class="dimension x-dimension">
+                En: <span id="x_value">{{ x }}</span> sm
+            </div>
+            <div class="dimension h-dimension">
+                Balandlik: <span id="h_value">{{ h }}</span> sm
+            </div>
         </div>
+
+        <!-- Summary cards -->
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4 d-flex">
+                <div class="card shadow-sm h-100 w-100 d-flex flex-column">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Avtomobil En (X)</h5>
+                        <p class="display-6 fw-bold text-primary" id="x_value_card">{{ x }}</p>
+                        <p class="text-muted mt-auto">Bu avtomobilning yon tomondan eni (gorizontal o'lcham).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="card shadow-sm h-100 w-100 d-flex flex-column">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Avtomobil Balandlik (H)</h5>
+                        <p class="display-6 fw-bold text-success" id="h_value_card">{{ h }}</p>
+                        <p class="text-muted mt-auto">Bu avtomobilning balandligi (vertikal o'lcham).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-<!--<script type="text/javascript" src='js/main.js'></script>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function updateData() {
+        $.ajax({
+            url: "{% url 'app:gab' %}",
+            type: "GET",
+            success: function (data) {
+                try {
+                    const parsedData = typeof data === "string" ? JSON.parse(data) : data;
+
+                    if (parsedData.h > 0) {
+                        $('#h_value').text(parsedData.h);
+                        $('#h_value_card').text(parsedData.h);
+                    }
+                    if (parsedData.x > 0) {
+                        $('#x_value').text(parsedData.x);
+                        $('#x_value_card').text(parsedData.x);
+                    }
+                } catch (e) {
+                    console.error("Error parsing JSON data:", e);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error fetching data:", error);
+            }
+        });
+    }
+
+    setInterval(updateData, 50);
+</script>
+
 </body>
 </html>
